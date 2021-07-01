@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    active: dev
+
+#dev ayarları
+---
+spring:
+  profiles: dev
+  application:
+    name: quiz-service
+  datasource:
+    url:  jdbc:postgresql://localhost:5432/quiz_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update # Hibernate ddl auto (create, create-drop, validate, update)
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+server:
+  port: 5000
+
+log:
+  file:
+    path: ${user.home}/logs/${spring.application.name}
+
+#prod ayarları
+---
+
+spring:
+  profiles: prod
+  application:
+    name: quiz-service
+  datasource:
+    url:  jdbc:postgresql://quizdatabase.cfbj6qoqfle7.us-east-2.rds.amazonaws.com:5432/quizdatabase
+    username: yener123456
+    password: yener123456
+  jpa:
+    hibernate:
+      ddl-auto: update # Hibernate ddl auto (create, create-drop, validate, update)
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+server:
+  port: 5000
+
+log:
+  file:
+    path: ${user.home}/logs/${spring.application.name}
+
+amazon:
+  aws:
+    accesskey: AKIAJCPR6AFTQYMPZD6A
+    secretkey: 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
